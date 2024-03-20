@@ -1,8 +1,6 @@
 import json
 import requests
 
-
-
 def fetch_product_data(url):
     try:
         response = requests.get(url)
@@ -13,19 +11,17 @@ def fetch_product_data(url):
         print(f"Error fetching data: {e}")
         return None
 
-
 def list_all_products(products):
     for product in products:
-        print(product)
+        print(product["title"])
         
-            
 def search_product(products, name):
     found = False  # Initialize found flag
     for product in products:
         # Check if the product dictionary has the 'name' key
-        if 'name' in product:
+        if product['title'] == name:
             # Check if the provided name matches any product name
-            if name.lower() in product['name'].lower():  # Convert both to lowercase for case-insensitive comparison
+            if name.lower() in product['title'].lower():  # Convert both to lowercase for case-insensitive comparison
                 found = True
                 # Print product details
                 print(json.dumps(product, indent=4))
