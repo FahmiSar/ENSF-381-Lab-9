@@ -21,11 +21,10 @@ def search_product(products, name):
         # Check if the product dictionary has the 'name' key
         if product['title'] == name:
             # Check if the provided name matches any product name
-            if name.lower() in product['title'].lower():  # Convert both to lowercase for case-insensitive comparison
-                found = True
-                # Print product details
-                print(json.dumps(product, indent=4))
-                break  # Exit loop once a match is found
+            found = True
+            # Print product details
+            print(json.dumps(product, indent=4))
+            return  # Exit loop once a match is found
     if not found:
         print("Product not found.")
 
